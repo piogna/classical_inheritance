@@ -72,4 +72,14 @@ describe "animals" do
       expect(c.opposable_thumbs?).to eq(true)
     end
   end
+
+  describe "inheritance" do
+    it "should not affect a child class when a parent changes an instance variable" do
+      p = Primate.new
+      c = Chimpanzee.new
+      c.has_tail = false
+      p.has_tail = true
+      expect(c.has_tail?).not_to eq(p.has_tail?)
+    end
+  end
 end
